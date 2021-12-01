@@ -6,7 +6,7 @@ from pprint import pprint
 db_from_name = 'final_data'
 col_from_name = 'statistics'
 
-db_to_name = "practice"
+db_to_name = "final_data"
 col_to_name = 'rankings'
 
 connection = pymongo.MongoClient("mongodb://localhost:27017/")
@@ -23,9 +23,6 @@ dates, keywords, text_companies
 db_result = connection.get_database(db_to_name)
 col_result = db_result.get_collection(col_to_name)
 
-sentiment_mapping = {'중립':'normal', '긍정':'positive', '부정':'negative'}
-
-i = 0
 
 def supplement_ranking(news_ranking):
     positive_cnt = len(news_ranking["positive_ranking"])
@@ -125,9 +122,6 @@ def date_total_keyword_specific():
 
         col_result.insert_one(result3)
 
-        break
-
-
     return "done"
 
 '''
@@ -172,8 +166,6 @@ def date_specific_keyword_total():
         result3["keyword"] = "total"
 
         col_result.insert_one(result3)
-
-        break
 
 
     return "done"
@@ -223,8 +215,6 @@ def date_specific_keyword_specific():
             result3["keyword"] = keyword
 
             col_result.insert_one(result3)
-
-            break
 
 
     return "done"
