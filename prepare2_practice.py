@@ -215,34 +215,61 @@ date_total_keyword_total_company_specific()
 
 # 7
 def date_specific_keyword_specific_company_specific():
-    for keyword in selectors["keywords"]:
-        result = []
-        for company in selectors["text_companies"]:
-            temp = {
-                "date": "total",
-                "keyword": keyword,
-                "company": company,
-                "total": 0,
-                "positive": 0,
-                "negative": 0,
-                "normal": 0
-            }
+    for date in selectors["dates"]:
+        for keyword in selectors["keywords"]:
+            result = []
+            for company in selectors["text_companies"]:
+                temp = {
+                    "date": date,
+                    "keyword": keyword,
+                    "company": company,
+                    "total": 0,
+                    "positive": 0,
+                    "negative": 0,
+                    "normal": 0
+                }
 
-            for data in col.find({"category":keyword,"text_company":company}):
-                temp["total"] += 1
-                temp[sentiment_mapping[data['label']]] += 1
+                for data in col.find({"date": date, "category":keyword,"text_company":company}):
+                    temp["total"] += 1
+                    temp[sentiment_mapping[data['label']]] += 1
 
-            result.append(temp)
+                result.append(temp)
 
-        col_result.insert_many(result)
-        print(keyword)
+                col_result.insert_many(result)
+                break
+            break
+        break
 
     return "done"
 
 '''
 업데이트 경우 외 실행 금지
-pprint(date_total_keyword_specific_company_specific())
+date_specific_keyword_specific_company_specific()
 '''
+
 # 8
 def date_total_keyword_total_company_total():
-    return
+    result = []
+    temp = {
+        "date": "total",
+        "keyword": "total",
+        "company": "total",
+        "total": 0,
+        "positive": 0,
+        "negative": 0,
+        "normal": 0
+    }
+
+    for data in col.find({}):
+        temp["total"] += 1
+        temp[sentiment_mapping[data['label']]] += 1
+
+    result.append(temp)
+    col_result.insert_many(result)
+
+    return "done"
+
+'''
+업데이트 경우 외 실행 금지
+date_total_keyword_total_company_total()
+'''
