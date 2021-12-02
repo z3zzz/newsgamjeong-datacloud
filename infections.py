@@ -18,21 +18,23 @@ result = []
 sums = 0
 for c in col.find({}):
     temp = {}
-    c["date"] = c["date"].replace('-','.')
-    c["corona"] = c["corona"].replace(',','')
+    #c["date"] = c["date"].replace('-','.')
+    #c["corona"] = c["corona"].replace(',','')
     temp["date"] = c["date"]
+    temp["month"] = (c["date"][5:7])
     temp["corona"] = c["corona"]
     temp["new"] = "yes"
-    sums += int(c["corona"])
+    #sums += int(c["corona"])
 
     result.append(temp)
-print(sums)
+#pprint(result)
 
 '''
 
 db_result = connection.get_database(db_to_name)
 col_result = db_result.get_collection(col_to_name)
 
+col_result.delete_many({})
 col_result.insert_many(result)
 
 '''
