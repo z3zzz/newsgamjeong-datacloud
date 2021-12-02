@@ -332,3 +332,4 @@
 {"_id":{"$oid":"61a813810bb59b62ec7e04f5"},"new":"yes","date":"2021.11.28","corona":"3925"}
 {"_id":{"$oid":"61a813840bb59b62ec7e04f6"},"new":"yes","date":"2021.11.29","corona":"3308"}
 {"_id":{"$oid":"61a813880bb59b62ec7e04f7"},"new":"yes","date":"2021.11.30","corona":"3032"}
+{"_id":{"$oid":"61a81b1d5c4177d77b592f5a"},"new":"yes","date":"total","corona":"386508","range":"until_2021_11_30"}

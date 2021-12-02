@@ -23,13 +23,17 @@ for c in col.find({}):
     temp["date"] = c["date"]
     temp["corona"] = c["corona"]
     temp["new"] = "yes"
-    #sums += c["corona"]
+    sums += int(c["corona"])
 
     result.append(temp)
+print(sums)
+
+'''
 
 db_result = connection.get_database(db_to_name)
 col_result = db_result.get_collection(col_to_name)
 
 col_result.insert_many(result)
 
+'''
 
