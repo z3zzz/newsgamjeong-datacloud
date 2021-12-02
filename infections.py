@@ -15,7 +15,7 @@ col = db.get_collection(col_from_name)
 
 
 result = []
-sums = 0
+i = 0
 for c in col.find({}):
     temp = {}
     #c["date"] = c["date"].replace('-','.')
@@ -24,13 +24,14 @@ for c in col.find({}):
     temp["month"] = (c["date"][5:7])
     temp["corona"] = c["corona"]
     temp["new"] = "yes"
+    temp["_id"] = c["date"] + str(i)
+    i += 1
     #sums += int(c["corona"])
 
     result.append(temp)
 #pprint(result)
 
 '''
-
 db_result = connection.get_database(db_to_name)
 col_result = db_result.get_collection(col_to_name)
 
