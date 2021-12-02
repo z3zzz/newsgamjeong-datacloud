@@ -16,23 +16,28 @@ col = db.get_collection(col_from_name)
 
 result = []
 sums = 0
+i = 0
 for c in col.find({}):
     temp = {}
-    temp["date"] = c["날짜"]
-    temp["social"] = c["사회"]
-    temp["economics"] = c["경제"]
-    temp["life"] = c["생활/문화"]
-    temp["politics"] = c["정치"]
-    temp["month"] = c["날짜"][5:7]
-    temp["new"] = "yes"
+    temp["date"] = c["date"]
+    temp["social"] = c["social"]
+    temp["economics"] = c["economics"]
+    temp["life"] = c["life"]
+    temp["politics"] = c["politics"]
+    temp["month"] = c["date"][5:7]
+    temp["new"] = "yes2"
+    temp["_id"] = c["date"] + str(i)
+    i += 1
+
 
     result.append(temp)
 
+#pprint(result)
 '''
-
 자료 삽입용 -
 db_result = connection.get_database(db_to_name)
 col_result = db_result.get_collection(col_to_name)
+col_result.delete_many({})
 
 col_result.insert_many(result)
 '''
