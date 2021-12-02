@@ -31,7 +31,7 @@ mapping = {
     "부동산": "realEstate",
     "수도권": "capital",
     "여행": "trip",
-    "자영업": "shop",
+    "자영업": "store",
     "주식": "stock",
     "친환경": "environment",
     "코로나": "corona",
@@ -42,11 +42,15 @@ mapping = {
 def month_total_keyword_specific():
     result = []
     for keyword in keywords:
-        temp = {
-            "month": "total",
-            "keyword": keyword,
-            "wordcloud_data": {}
-        }
+        try:
+            temp = {
+                "month": "total",
+                "keyword": mapping[keyword],
+                "wordcloud_data": {}
+            }
+        except:
+            continue
+
         try:
             for c in col.find({"keyword": mapping[keyword]}):
                 for word, count in c["wordcloud_data"].items():
@@ -62,9 +66,9 @@ def month_total_keyword_specific():
         result.append(temp)
 
 
-    pprint(result)
+    col_result.insert_many(result)
 '''
-테스트용
+데이터 삽잉용
 month_total_keyword_specific()
 '''
 
@@ -89,13 +93,13 @@ def month_specific_keyword_total():
         temp["wordcloud_data"] = dict(itertools.islice(temps,40))
         result.append(temp)
 
-    pprint(result)
+    col_result.insert_many(result)
 
 '''
-테스트용
+데이터 삽입용
 month_specific_keyword_total()
-
 '''
+
 def month_total_keyword_total():
     result = {
         "month": "total",
@@ -115,10 +119,16 @@ def month_total_keyword_total():
     temps = sorted(result["wordcloud_data"].items(), key=lambda x:x[1], reverse=True)
     result["wordcloud_data"] = dict(itertools.islice(temps,40))
 
-    pprint(result)
+    col_result.insert_one(result)
 
 '''
-테스트용
-
+데이터 삽입용
 month_total_keyword_total()
+'''
+
+
+
+'''
+데이터 삭제삭제용
+col_result.delete_many({"month":"total"})
 '''
