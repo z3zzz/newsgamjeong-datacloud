@@ -3,8 +3,8 @@ import json
 from pprint import pprint
 
 ## 필수!! db, col 이름 변수 설정
-db_from_name = 'raw_data'
-col_from_name = 'newses'
+db_from_name = 'practice'
+col_from_name = 'new3'
 
 db_to_name = "final_data"
 col_to_name = 'newses'
@@ -29,10 +29,13 @@ def getSentiment(sentiment_softmax_list):
 
 def make_news_list():
     unit = 5000
+    dates = []
     for i in range(800):
         result = []
-        for c in col.find().skip(unit * i).limit(unit):
+        for c in col.find({}).skip(unit * i).limit(unit):
             c["date"] = c["time"][:10]
+            if c["date"] not in dates:
+                dates.append(c["date"])
             if c["category"] == "생활/문화":
                 c["category"] = "생활문화"
             c["category"] = [c["category"]]
@@ -45,8 +48,7 @@ def make_news_list():
 
         col_result.insert_many(result)
         print(i)
-
-
+        print(dates)
 
 '''
 메인함수

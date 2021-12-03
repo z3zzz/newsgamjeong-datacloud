@@ -57,10 +57,13 @@ def date_total_keyword_specific_company_specific():
 업데이트 경우 외 실행 금지
 pprint(date_total_keyword_specific_company_specific())
 '''
+new_dates = ["2021.11.27", "2021.11.28", "2021.11.29", "2021.11.30", "2021.12.01", "2021.12.02"]
+
 
 # 2
 def date_specific_keyword_total_company_specific():
-    for date in selectors["dates"]:
+    #for date in selectors["dates"]:
+    for date in new_dates:
         result = []
         for company in selectors["text_companies"]:
             temp = {
@@ -79,6 +82,7 @@ def date_specific_keyword_total_company_specific():
 
             result.append(temp)
             col_result.insert_many(result)
+            pprint(result)
             break
 
         break
@@ -96,7 +100,8 @@ date_specific_keyword_total_company_specific()
 
 # 3
 def date_specific_keyword_specific_company_total():
-    for date in selectors["dates"]:
+    #for date in selectors["dates"]:
+    for date in new_dates:
         result = []
         for keyword in selectors["keywords"]:
             temp = {
@@ -115,6 +120,7 @@ def date_specific_keyword_specific_company_total():
 
             result.append(temp)
             col_result.insert_many(result)
+            pprint(result)
             break
 
         break
@@ -128,7 +134,8 @@ date_specific_keyword_specific_company_total()
 
 # 4
 def date_specific_keyword_total_company_total():
-    for date in selectors["dates"]:
+    for date in new_dates:
+    #for date in selectors["dates"]:
         result = []
         temp = {
             "date": date,
@@ -146,6 +153,7 @@ def date_specific_keyword_total_company_total():
 
         result.append(temp)
         col_result.insert_many(result)
+        pprint(result)
         break
 
     return "done"
@@ -215,7 +223,8 @@ date_total_keyword_total_company_specific()
 
 # 7
 def date_specific_keyword_specific_company_specific():
-    for date in selectors["dates"]:
+    #for date in selectors["dates"]:
+    for date in new_dates:
         for keyword in selectors["keywords"]:
             result = []
             for company in selectors["text_companies"]:
@@ -236,6 +245,7 @@ def date_specific_keyword_specific_company_specific():
                 result.append(temp)
 
                 col_result.insert_many(result)
+                pprint(result)
                 break
             break
         break

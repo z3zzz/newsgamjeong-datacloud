@@ -135,9 +135,12 @@ def date_total_keyword_specific():
 date_total_keyword_specific()
 '''
 
+new_dates = ["2021.11.27", "2021.11.28", "2021.11.29", "2021.11.30", "2021.12.01", "2021.12.02"]
+
 # 2
 def date_specific_keyword_total():
-    for date in selectors["dates"]:
+    for date in new_dates:
+    #for date in selectors["dates"]:
 
         result = {
             "positive_ranking": {},
@@ -172,7 +175,7 @@ def date_specific_keyword_total():
         result3["keyword"] = "total"
 
         col_result.insert_one(result3)
-
+        pprint(result3)
         break
 
 
@@ -187,7 +190,8 @@ date_specific_keyword_total()
 
 # 3
 def date_specific_keyword_specific():
-    for date in selectors["dates"]:
+    for date in new_dates:
+    #for date in selectors["dates"]:
         for keyword in selectors["keywords"]:
 
             result = {
@@ -223,6 +227,7 @@ def date_specific_keyword_specific():
             result3["keyword"] = keyword
 
             col_result.insert_one(result3)
+            print(result3)
 
             break
 
