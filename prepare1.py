@@ -4,7 +4,7 @@ from pprint import pprint
 
 ## 필수!! db, col 이름 변수 설정
 db_from_name = 'practice'
-col_from_name = 'new3'
+col_from_name = 'new4'
 
 db_to_name = "final_data"
 col_to_name = 'newses'

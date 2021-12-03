@@ -136,10 +136,11 @@ date_total_keyword_specific()
 '''
 
 new_dates = ["2021.11.27", "2021.11.28", "2021.11.29", "2021.11.30", "2021.12.01", "2021.12.02"]
+new_date = ["2021.11.26"]
 
 # 2
 def date_specific_keyword_total():
-    for date in new_dates:
+    for date in new_date:
     #for date in selectors["dates"]:
 
         result = {
@@ -189,7 +190,7 @@ date_specific_keyword_total()
 
 # 3
 def date_specific_keyword_specific():
-    for date in new_dates:
+    for date in new_date:
     #for date in selectors["dates"]:
         for keyword in selectors["keywords"]:
 
