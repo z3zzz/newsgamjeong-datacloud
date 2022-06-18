@@ -1,0 +1,11 @@
+{
+  "dependencies": {
+    "bluebird": "^3.7.2",
+    "mysql2": "^2.3.3",
+    "password-prompt": "^1.1.2"
+  },
+  "type": "module",
+  "scripts": {
+    "start": "node mysqlInsert.js"
+  }
+}
